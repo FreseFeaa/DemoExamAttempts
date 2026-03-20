@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head><title>Новая заявка</title></head>
+<body>
+    <h2>Новая заявка</h2>
+    {% if error %}
+        <p style="color:red">{{ error }}</p>
+    {% endif %}
+    <form method="post">
+        Курс:
+        <select name="course">
+            {% for c in courses %}
+                <option value="{{ c }}">{{ c }}</option>
+            {% endfor %}
+        </select><br>
+        Желаемая дата начала: <input type="date" name="date" required><br>
+        Способ оплаты:
+        <select name="payment">
+            {% for p in payments %}
+                <option value="{{ p }}">{{ p }}</option>
+            {% endfor %}
+        </select><br>
+        <button type="submit">Отправить заявку</button>
+    </form>
+    <a href="/profile">Назад</a>
+</body>
+</html>

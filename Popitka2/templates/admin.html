@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KorokNET</title>
+</head>
+<body>
+    <h1>Все заявки</h1>
+    <a href="/logout">Выйти</a> <br>
+<table>
+    <tr>
+        <th>Пользователь</th>  <th>Курс</th>  <th>Способ оплаты</th>   <th>Статус</th> <th>Дата</th> 
+    </tr>
+    {%for r in requests%}
+    <tr>
+        
+        <td>{{r.login }} {{r.fio}}</td>
+        <td>{{r.course_name}}</td>
+        <td>{{ r.payment_method }}</td>
+        <td>{{ r.status }}</td>
+        <td>{{r.date_start}}</td>
+       
+    </tr>
+     {%endfor%}
+</table>
+
+
+</body>
+</html>

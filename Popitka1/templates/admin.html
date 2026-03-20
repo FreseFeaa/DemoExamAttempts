@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>КорочкиЕсть</title>
+</head>
+<body>
+    <h1>Все заявки</h1>
+      <a href="/logout">Выйти</a>
+
+      <table >
+        <tr>
+            <th>ID</th><th>Пользователь</th><th>Курс</th><th>Оплата</th><th>Статус</th><th>Отзыв</th><th>Действие</th>
+        </tr>
+        {%for r in requests%}
+        <tr>
+            <td>{{ r.id }}</td>
+            <td>{{ r.login }} ({{ r.fullname }})</td>
+            <td>{{ r.course_name }}</td>
+            <td>{{ r.start_date }}</td>
+            <td>{{ r.payment_method }}</td>
+            <td>{{ r.status }}</td>
+            <td>{{ r.review or '' }}</td>
+            <td>
+                Пока пофиг
+            </td>
+        </tr>
+
+        {%endfor%}
+
+
+      </table>
+</body>
+</html>

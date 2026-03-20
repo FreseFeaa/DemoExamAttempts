@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>КорочкиЕсть</title>
+</head>
+<body>
+    <h1>Мои заявки</h1>
+    <a href="/create_request">Новая заявка</a> |  <a href="/logout">Выйти</a>
+
+{% for r in requests%}
+<div>
+    <p>Курс: {{r.course_name}}</p>
+    <p>Дата: {{r.start_date}}</p>
+    <p>Оплата: {{r.payment_method}}</p>
+    <p>Статус: {{r.status}}</p>
+</div>
+
+
+{% endfor%}
+
+</body>
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head><title>Мои заявки</title></head>
+<body>
+    <h2>Мои заявки</h2>
+    <a href="/create_request">Новая заявка</a> | <a href="/logout">Выйти</a>
+    {% for r in requests %}
+    <div style="border:1px solid #ccc; margin:10px; padding:10px;">
+        <p><strong>Курс:</strong> {{ r.course_name }}</p>
+        <p><strong>Дата начала:</strong> {{ r.start_date }}</p>
+        <p><strong>Оплата:</strong> {{ r.payment_method }}</p>
+        <p><strong>Статус:</strong> {{ r.status }}</p>
+        {% if r.status == 'Обучение завершено' and not r.review %}
+            <form method="post" action="/add_review">
+                <input type="hidden" name="request_id" value="{{ r.id }}">
+                <textarea name="review" placeholder="Оставьте отзыв" required></textarea>
+                <button type="submit">Отправить отзыв</button>
+            </form>
+        {% elif r.review %}
+            <p><strong>Отзыв:</strong> {{ r.review }}</p>
+        {% endif %}
+    </div>
+    {% endfor %}
+</body>
+</html>
