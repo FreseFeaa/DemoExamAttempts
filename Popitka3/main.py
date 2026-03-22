@@ -1,8 +1,8 @@
-import sqlite3
 import re
 import bcrypt
 from datetime import datetime
 
+import sqlite3
 from fastapi import FastAPI, Request, Form
 from fastapi.responses import RedirectResponse
 from fastapi.templating import Jinja2Templates
