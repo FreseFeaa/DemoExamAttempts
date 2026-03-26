@@ -148,7 +148,7 @@ def post_profile(request: Request,
     
 
     with get_db() as conn:
-        cur= conn.execute("select * from requests where id =  ?", (request_id,)).fetchone()
+        cur= conn.execute("select * from requests where id =  ? and user_id = ? and status = 'Обучение завершено' and review is null", (request_id,user_id)).fetchone()
 
     if cur:
         with get_db() as conn:
