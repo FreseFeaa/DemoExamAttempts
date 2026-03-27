@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>KorokNET</title>
+</head>
+<body>
+  <h1>Профиль</h1>
+  <a href="/create_request">Новая заявка</a> | <a href="/logout">Выйти</a>
+
+    {%for r in requests%}
+    <div style="border: 1px solid grey; padding: 10px; margin: 10px;">
+        <p>Курс: {{r.course_name}}</p> <br>
+        <p>Дата старта: {{r.date_start}}</p> <br>
+        <p>Способ оплаты: {{r.payment_method}}</p> <br>
+        <p>Статус: {{r.status}}</p> <br>
+        {%if r.status == 'Обучение завершено' and r.review == None%}
+        <form action="/add_review" method="post">
+            <input type="hidden" name="request_id" value="{{r.id}}">
+            <textarea name="review" required placeholder="Напишите отзыв..."></textarea> <br>
+            <button type="submit">Потвердить</button>
+        </form>
+        {% endif %}
+
+        {%if r.review%}
+        <p>Отзыв: {{r.review}}</p><br>
+        {%endif%}
+    </div>
+    {%endfor%}
+
+</body>
+</html>
