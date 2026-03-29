@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KorokNET</title>
+</head>
+<body>
+    <h1>Алдмин панель</h1>
+    <a href="/logout">Выйти</a>
+    
+
+    <table border="1">
+        <tr>
+            <th>ID</th><th>Логин</th><th>ФИО</th><th>Курс</th><th>Дата старта</th><th>Метод оплаты</th><th>Отзыв</th><th>Статус</th>
+        </tr>
+        {%for r in requests%}
+        <tr>
+            <td>{{r.id}}</td>
+            <td>{{r.login}}</td>
+            <td>{{r.fio}}</td>
+            <td>{{r.course_name}}</td>
+            <td>{{r.date_start}}</td>
+            <td>{{r.payment_method}}</td>
+            <td>{{r.review or ''}}</td>
+            <td>
+                <form action="/admin/change_status" method="post">
+                    <input type="hidden" name="request_id" value="{{r.id}}">
+                    <select name="status">
+                        <option {%if r.status == "Новая" %} selected {%endif%} value="Новая">Новая</option>
+                        <option {%if r.status == "В процессе" %} selected {%endif%} value="В процессе">В процессе</option>
+                        <option {%if r.status == "Обучение завершено" %} selected {%endif%} value="Обучение завершено">Обучение завершено</option>
+                    </select>
+                    <button type="submit">Потвердить</button>
+                </form>
+            </td>
+        </tr>
+        {%endfor%}
+    </table>
+
+</body>
+</html>
