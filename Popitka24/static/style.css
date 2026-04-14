@@ -1,0 +1,113 @@
+body{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: rgb(43, 43, 43);
+    background-color: whitesmoke;
+    display: flex;
+    flex-direction: column;
+    max-width: 1200px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+h1{
+    color: black;
+    text-align: center;
+}
+
+
+form{
+    border-radius: 10px;
+    background-color: white;
+    padding: 25px;
+    margin: 0 auto;
+    box-shadow: 0 2px 10px grey;
+    max-width: 500px;
+    font-weight: bold;
+}
+
+a{
+    color: blue;
+}
+
+input, select, textarea, button {
+    width: 90%;
+    padding: 10px;
+    margin: 5px 20px 15px 0px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 16px;
+}
+
+button{
+    color: white;
+    background-color: rgb(67, 67, 180);
+    border: none;
+    cursor: pointer;
+    transition: 0.3s;
+    width: 50%;
+}
+
+button:hover{
+    background-color: rgb(41, 41, 141);
+}
+
+table { 
+    width: 100%;
+    background-color: white;
+    border-collapse: collapse;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px grey;
+}
+
+th, td{
+    border: 1px solid grey;
+    padding: 10px;
+}
+
+th {
+    color: white;
+    background-color: blue;
+}
+
+.requests-list {
+    display: flex;
+    flex-direction: column;
+    align-items: center;  
+}
+
+.request-card {
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    padding: 15px;
+    margin-bottom: 10px;
+    margin-top: 5px;
+    width: 40%;
+}
+
+.request-card p {
+    margin: 8px 0;
+    font-size: 16px;
+}
+
+.filter{
+    border-radius: 10px;
+    background-color: whitesmoke;
+    padding: 25px;
+    margin: 0 auto;
+    box-shadow: none;
+    max-width: 20%;
+    font-weight: bold;
+
+}
+
+.status{
+    border-radius: 10px;
+    background-color: white;
+    padding: 25px;
+    margin: 0 auto;
+    box-shadow: none;
+    max-width: 100%;
+    font-weight: bold;
+
+}
