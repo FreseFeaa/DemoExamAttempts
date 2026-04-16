@@ -1,0 +1,117 @@
+body {
+    text-align: center;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: rgb(65, 65, 65);
+    background-color: whitesmoke;
+    width: 100%;
+    padding: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+h1{
+    color: rgb(5, 5, 179);
+    font-size: 40px;
+    font-weight:bold ;
+}
+
+form{
+    background-color: white;
+    padding: 20px;
+    margin: 0 auto;
+    box-shadow: 0px 10px 10px 3px grey;
+    border-radius: 15px;
+    font-weight:bold ;
+    align-items: center;
+    max-width: 500px;
+}
+
+.form-review{
+    box-shadow: none;
+}
+
+.form-filter{
+    margin-top: 20px;
+    padding: 0px;
+    box-shadow: none;
+    background-color: whitesmoke;
+}
+
+.form-status{
+    padding: 0px;
+    box-shadow: none;
+}
+
+
+input, select, textarea,button {
+    padding: 10px;
+    margin: 5px;
+    width: 90%;
+    border-radius: 10px;
+    font-size: 16px;
+}
+
+button{
+    background-color: rgb(52, 52, 255);
+    color: white;
+    cursor: pointer;
+    border-radius: 10px;
+    border: none;
+    padding: 10px;
+    margin: 5px;
+    transition: 0,3s;
+    font-weight:bold;
+    width: 50%;
+}
+
+button:hover{
+    background-color: rgb(19, 19, 255);
+}
+
+a{
+    color: blue;
+}
+
+.request-card{
+    background-color: white;
+    padding: 20px 10px 10px 10px;
+    margin: 20px;
+    box-shadow: 0px 10px 10px 3px grey;
+    border-radius: 15px;
+    display: flex;
+    width: 30%;
+    flex-direction: column;
+}
+
+table {
+    width: 100%;
+    background-color: white;
+    border-radius: 10px;
+    border-collapse: collapse;
+    box-shadow: 0px 10px 10px 3px grey;
+    margin: 20px;
+
+}
+
+td, th {
+    border: 1px solid grey;
+}
+
+th {
+    background-color: rgb(67, 67, 255);
+    color: white;
+    padding: 10px;
+    font-weight:bold;
+}
+
+.nav{
+    font-weight:bold ;
+    display: flex;
+    flex-direction: row;
+    gap: 15px;
+}
+
+.nav a{
+    color: rgb(52, 52, 255);
+}
