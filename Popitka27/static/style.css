@@ -1,0 +1,91 @@
+body{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    display: flex;
+    flex-direction: column;
+    margin: 10px auto;
+    text-align: center;
+    background-color: whitesmoke;
+    align-items: center;
+}
+
+h1{
+    font-size: 40px;
+    color: rgb(28, 28, 255);
+    font-weight: bold ;
+}
+
+form{
+    background-color: white;
+    box-shadow: 2px 10px 10px 1px grey;
+    max-width: 400px;
+    padding: 30px;
+    border-radius: 15px;
+    font-weight: bold ;
+}
+
+button {
+    background-color: rgb(66, 66, 255);
+    color: white;
+    border-radius: 10px;
+    cursor: pointer;
+    transform: 3s;
+    border: none;
+    font-weight: bold ;
+    
+}
+
+button:hover{
+    background-color:rgb(29, 29, 185);
+}
+
+input, button, textarea {
+    margin: 10px;
+    padding: 10px;
+    width: 80%;
+    border-radius: 15px;
+}
+
+.card {
+    background-color: white;
+    box-shadow: 2px 10px 10px 1px grey;
+    width: 400px;
+    padding: 30px;
+    border-radius: 15px;
+    margin: 20px;
+}
+
+.form-review {
+    box-shadow: none;
+}
+
+.form-table {
+    box-shadow: none;
+    background-color: whitesmoke;
+}
+
+
+a{
+    color: blue;
+}
+
+nav{
+    font-size: 20px;
+    font-weight: bold ;
+}
+
+table{
+    background-color: white;
+    border-collapse: collapse;
+    box-shadow: 2px 10px 10px 1px grey;
+}
+
+th, td {
+    border: 1px solid grey;
+    padding: 10px;
+}
+
+th{
+    color: white;
+    background-color: rgb(111, 111, 255);
+
+}

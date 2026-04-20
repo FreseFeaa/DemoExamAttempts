@@ -8,17 +8,17 @@
 </head>
 <body>
     <h1>Профиль</h1>
-    <a href="/create_request">Новая заявка</a> | <a href="/logout">Выйти</a>
+     <div class="nav"> <a href="/create_request">Новая заявка</a> | <a href="/logout">Выйти</a> </div>
 
     {%for r in requests%}
     <div class="card">
-        <p>Курс: {{r.course_name}}</p><br>
-        <p>Дата старта: {{r.date_start}}</p><br>
-        <p>Способ оплаты: {{r.payment_method}}</p><br>
-        <p>Статус: {{r.status}}</p><br>
+        <p><strong>Курс: </strong> {{r.course_name}}</p><br>
+        <p><strong> Дата старта: </strong> {{r.date_start}}</p><br>
+        <p><strong>Способ оплаты:</strong> {{r.payment_method}}</p><br>
+        <p><strong>Статус:</strong> {{r.status}}</p><br>
 
-        {%if r.review == 'Обучение завершено' and r.status == None%}
-        <form method="post" action="/add_review">
+        {%if r.status == 'Обучение завершено' and r.review == None%}
+        <form method="post" action="/add_review" class="form-review">
             <input type="hidden" name="request_id" value="{{r.id}}">
             <textarea name="review" placeholder="Отзыв..." required></textarea> <br>
             <button type="submit">Потвердить</button>
@@ -26,7 +26,7 @@
         {%endif%}
 
         {%if r.review%}
-        <p>Отзыв: {{r.review}}</p><br>
+        <p><strong>Отзыв:</strong> {{r.review}}</p><br>
         {%endif%}
     </div>
     {%endfor%}
