@@ -3,7 +3,7 @@ body {
     background-color: whitesmoke;
     align-items: center;
     text-align: center;
-    margin: 0px auto;
+    margin: 0; 
     padding: 10px;
     display: flex;
     flex-direction: column;    
@@ -21,23 +21,25 @@ form {
     box-shadow: 1px 5px 5px 1px gray;
     border-radius: 15px;
     font-weight: bold;
-    max-width: 400px;
+    max-width: 500px;
 }
 
 input, button, textarea, select{
     padding: 10px;
-    margin: 10px;
+    margin: 10px 0;
     border-radius: 15px;
-
+    width: 100%; 
+    max-width: 400px;
+    box-sizing: border-box;
 }
 
 button {
-border: none;
-background-color: rgb(82, 82, 255);
-transform: 0,3s;
-cursor: pointer;
-color: white;
-width: 60%;
+    border: none;
+    background-color: rgb(82, 82, 255);
+    transform: 0,3s;
+    cursor: pointer;
+    color: white;
+    width: 60%;
 }
 
 button:hover{
@@ -54,7 +56,8 @@ a{
     margin: 10px;
     box-shadow: 1px 5px 5px 1px gray;
     border-radius: 15px;
-    width: 30%;
+    width: 100%;
+    max-width: 400px;
 }
 
 
@@ -69,11 +72,20 @@ a{
     padding-bottom: 0px;
 }
 
+.form-status select, .form-status button {
+    width: auto;                                   
+}
+
+.table-div{
+    width: 100%;
+    overflow-x: auto;
+    margin: 10px;
+}
+
 table{
     background-color: white;
-    margin: 10px;
     box-shadow: 1px 5px 5px 1px gray;
-    width: 90%;
+    width: 100%;
     border-collapse: collapse;
 }
 
@@ -86,4 +98,19 @@ th{
 th, td{
     border: 1px solid grey;
     padding: 10px;
+}
+
+.glide {
+    max-width: 600px;
+}
+
+.glide__slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;   
+    display: block;
+}
+
+.glide__arrow {
+   width: 40px;
 }

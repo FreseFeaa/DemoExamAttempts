@@ -18,6 +18,7 @@
             <option {%if cur_status == 'Обучение завершено' %} selected {%endif%} value="Обучение завершено">Обучение завершено</option>
         </select>
     </form>
+    <div class="table-div">
     <table>
         <tr>
             <th>ID</th><th>Логин</th><th>ФИО</th><th>Курс</th><th>Дата старта</th><th>Способ оплаты</th><th>Отзыв</th><th>Статус</th>
@@ -44,5 +45,6 @@
         </tr>
         {%endfor%}
     </table>
+    </div>
 </body>
 </html>
