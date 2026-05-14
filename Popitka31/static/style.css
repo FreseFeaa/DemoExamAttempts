@@ -1,0 +1,128 @@
+body{
+    background-color: whitesmoke;
+    margin: 0 auto;
+    text-align: center;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    align-items: center;
+}
+
+h1{
+    font-size: 40px;
+    color: blue;
+}
+
+a{
+    color: blue;
+}
+
+form{
+    background-color: white;
+    box-shadow: 1px 5px 5px 1px gray;
+    width: 100%;
+    max-width: 300px;
+    margin: 0 auto;
+    padding: 15px 0;
+    border-radius: 15px;
+    font-weight: bold;
+}
+
+input, button, textarea, select{
+    width: 100%;
+    max-width: 150px;
+    margin: 0 auto;
+    margin: 10px 0;
+    border-radius: 10px;
+    padding: 10px 5px;
+    box-sizing: border-box;
+}
+
+button{
+    background-color: rgb(96, 96, 255);
+    color: white;
+    cursor: pointer;
+    transition: 500ms;
+    border: none;
+}
+
+button:hover{
+    background-color: rgb(27, 27, 212);
+}
+
+.card{
+    background-color: white;
+    box-shadow: 1px 5px 5px 1px gray;
+    width: 100%;
+    max-width: 400px;
+    margin: 15px auto;
+    padding: 10px 0;
+    border-radius: 15px;
+}
+
+.form-review{
+    box-shadow: none;
+    padding: 0;
+}
+
+.form-filter{
+    box-shadow: none;
+    padding: 15px 0 0 0;
+    background-color: whitesmoke;
+}
+
+.form-status{
+    box-shadow: none;
+    padding: 0;
+}
+
+.form-status select, .form-status button {
+    width: auto;                                   
+}
+
+.table-div{
+    width: 100%;
+    overflow-x: auto;
+}
+
+table{
+    background-color: white;
+    box-shadow: 1px 5px 5px 1px gray;
+    width: 90%;
+    margin: 15px auto;
+    border-collapse: collapse;
+}
+
+th {
+    background-color: rgb(96, 96, 255);
+    color: white;
+}
+
+th, td{
+    border: 1px solid gray;
+}
+
+.glide {
+    max-width: 600px;
+    margin: 10px auto 10px auto;
+
+}
+
+.glide__slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;   
+    display: block;
+}
+
+.glide__arrow {
+   width: 40px;
+}
+
+.nav img {
+    width: 100%;
+    height: 100%;
+    max-width: 300px;
+    max-height: 300px;
+    border-radius: 15px;
+    padding: 5px 0;
+}
+
