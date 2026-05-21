@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="/static/pico-main/css/pico.classless.min.css">
+    <link rel="stylesheet" href="/static/style.css">
+    <link rel="stylesheet" href="/static/glide.core.min.css">
+    <link rel="stylesheet" href="/static/glide.theme.min.css">
+    <title>KorokNET</title>
+</head>
+<body>
+    <h1>Профиль</h1>
+    <a href="/create_request">Новая заявка</a> | <a href="/logout">Выйти</a>
+
+    <div class="glide">
+        <div class="glide__track" data-glide-el="track">
+            <ul class="glide__slides">
+                <li class="glide__slide"><img src="/static/komar2.jpg" ></li>
+                <li class="glide__slide"><img src="/static/komar3.jpg" ></li>
+                <li class="glide__slide"><img src="/static/komar4.jpg"></li>
+            </ul>
+        </div>
+        <div class="glide__arrows" data-glide-el="controls">
+            <button class="glide__arrow glide__arrow--left" data-glide-dir="<">❮</button>
+            <button class="glide__arrow glide__arrow--right" data-glide-dir=">">❯</button>
+        </div>
+    </div>
+
+    {%for r in requests%}
+    <div class="card">
+      <p><strong>Курс: </strong>{{r.course_name}}</p> <br>
+      <p><strong>Дата старта: </strong>{{r.date_start}}</p> <br>
+      <p><strong>Способ оплаты: </strong>{{r.payment_method}}</p> <br>
+      <p><strong>Статус: </strong>{{r.status}}</p> <br>
+      {%if r.review%}
+      <p><strong>Отзыв: </strong>{{r.review}}</p> <br>
+      {%endif%}
+
+      {%if r.review == None and r.status == 'Обучение завершено'%}
+      <form method="post" action="/add_review" class="form-review">
+        <input type="hidden" name="request_id" value="{{r.id}}">
+        <textarea name="review" placeholder="Отзыв..." required></textarea> <br>
+        <button type="submit">Потвердить</button>
+      </form>
+      {%endif%}
+
+    </div>
+    {%endfor%}
+
+    <script src="/static/glide.min.js"></script>
+    <script>
+    new Glide('.glide',{
+        type:'carousel',
+        autoplay:3000,
+        perView:1,
+        loop:1
+    }).mount();
+    </script>
+</body>
+</html>
