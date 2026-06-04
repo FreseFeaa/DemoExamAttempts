@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/static/style.css">
+    <title>Пассажирам.РФ</title>
+</head>
+<body>
+    <h1>Админ-панель</h1>
+    <div class="nav">
+        <a href="/logout">Выйти</a>
+    </div>
+    <form class="form-filter">
+        Фильтровать по:
+        <select name="status" onchange="this.form.submit()">
+            <option {%if cur_status == 'Все'%} selected {%endif%}  value="Все">Все</option>
+            <option {%if cur_status == 'Новая'%} selected {%endif%}  value="Новая">Новая</option>
+            <option {%if cur_status == 'Идет обучение'%} selected {%endif%}  value="Идет обучение">Идет обучение</option>
+            <option {%if cur_status == 'Обучение завершено'%} selected {%endif%}  value="Обучение завершено">Обучение завершено</option>
+        </select>
+    </form>
+    <div class="table-responsive">
+    <table>
+        <tr>
+            <th>ID</th><th>Логин</th><th>ФИО</th><th>Вид транспорта</th><th>Дата старта</th><th>Способ оплаты</th><th>Отзыв</th><th>Статус</th>
+        </tr>
+        {%for r in requests%}
+        <tr>
+            <td>{{r.id}}</td>
+            <td>{{r.login}}</td>
+            <td>{{r.fio}}</td>
+            <td>{{r.transport}}</td>
+            <td>{{r.date_start}}</td>
+            <td>{{r.payment_method}}</td>
+            <td>{{r.review or ''}}</td> 
+            <td>
+                <form action="/admin/change_status" method="post" class="form-status">
+                    <input type="hidden" name="request_id" value="{{r.id}}">
+                    <select name="status" onchange="this.form.submit()">
+                        <option {%if r.status == 'Новая'%} selected {%endif%}  value="Новая">Новая</option>
+                        <option {%if r.status == 'Идет обучение'%} selected {%endif%}  value="Идет обучение">Идет обучение</option>
+                        <option {%if r.status == 'Обучение завершено'%} selected {%endif%}  value="Обучение завершено">Обучение завершено</option>
+                    </select>
+                </form>
+            </td>
+
+        </tr>
+        {%endfor%}
+    </table>
+    </div>
+</body>
+</html>
