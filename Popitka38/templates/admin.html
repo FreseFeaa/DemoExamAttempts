@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/static/style.css">
+    <title>Пассажирам.РФ</title>
+</head>
+<body>
+    <h1>Админ-панель</h1>
+    <div class="nav">
+        <a href="/logout">Выйти</a>
+    </div>
+    <form class="form-filter">
+        Фильтровать по:
+        <select name="status" onchange="this.form.submit()">
+            <option {%if cur_status == 'Все'%} selected {%endif%}  value="Все">Все</option>
+            <option {%if cur_status == 'Новая'%} selected {%endif%}  value="Новая">Новая</option>
+            <option {%if cur_status == 'Идет обучение'%} selected {%endif%}  value="Идет обучение">Идет обучение</option>
+            <option {%if cur_status == 'Обучение завершено'%} selected {%endif%}  value="Обучение завершено">Обучение завершено</option>
+        </select>
+    </form>
+    <div class="table-responsive">
+    <table>
+        <thead>
+            <tr>
+                <th>
+                    <a href="?sort_by=id&order={% if sort_by == 'id' and order == 'desc' %}asc{% else %}desc{% endif %}&page={{ page }}&per_page={{ per_page }}&status={{ cur_status }}">
+                        ID
+                        {% if sort_by == 'id' %}
+                            {% if order == 'desc' %}▼{% else %}▲{% endif %}
+                        {% endif %}
+                    </a>
+                </th>
+                <th>Логин</th>
+                <th>ФИО</th>
+                <th>Вид транспорта</th>
+                <th><a href="?sort_by=date_start&order={% if sort_by == 'date_start' and order == 'desc' %}asc{% else %}desc{% endif %}&page={{ page }}&per_page={{ per_page }}&status={{ cur_status }}">Дата старта</a></th>
+                <th>Способ оплаты</th>
+                <th>Отзыв</th>
+                <th><a href="?sort_by=status&order={% if sort_by == 'status' and order == 'desc' %}asc{% else %}desc{% endif %}&page={{ page }}&per_page={{ per_page }}&status={{ cur_status }}">Статус</a></th>
+            </tr>
+        </thead>
+        {%for r in requests%}
+        <tr>
+            <td>{{r.id}}</td>
+            <td>{{r.login}}</td>
+            <td>{{r.fio}}</td>
+            <td>{{r.transport}}</td>
+            <td>{{r.date_start}}</td>
+            <td>{{r.payment_method}}</td>
+            <td>{{r.review or ''}}</td> 
+            <td>
+                <form action="/admin/change_status" method="post" class="form-status">
+                    <input type="hidden" name="request_id" value="{{r.id}}">
+                    <select name="status" onchange="this.form.submit()">
+                        <option {%if r.status == 'Новая'%} selected {%endif%}  value="Новая">Новая</option>
+                        <option {%if r.status == 'Идет обучение'%} selected {%endif%}  value="Идет обучение">Идет обучение</option>
+                        <option {%if r.status == 'Обучение завершено'%} selected {%endif%}  value="Обучение завершено">Обучение завершено</option>
+                    </select>
+                </form>
+            </td>
+
+        </tr>
+        {%endfor%}
+    </table>
+        <div class="pagination">
+        {% if page > 1 %}
+            <a href="?page={{ page-1 }}&per_page={{ per_page }}&status={{ cur_status }}&sort_by={{ sort_by }}&order={{ order }}">← Предыдущая</a>
+        {% endif %}
+        Страница {{ page }} из {{ total_pages }}
+        {% if page < total_pages %}
+            <a href="?page={{ page+1 }}&per_page={{ per_page }}&status={{ cur_status }}&sort_by={{ sort_by }}&order={{ order }}">Следующая →</a>
+        {% endif %}
+    </div>
+    </div>
+
+    <script>
+    const urlParams = new URLSearchParams(window.location.search);
+    if (urlParams.has('msg') && urlParams.get('msg') === 'updated') {
+        alert('Статус заявки успешно изменён!');
+        const cleanUrl = window.location.pathname + '?' + new URLSearchParams(Array.from(urlParams.entries()).filter(([key]) => key !== 'msg')).toString();
+        window.history.replaceState({}, document.title, cleanUrl);
+    }
+</script>
+</body>
+</html>
