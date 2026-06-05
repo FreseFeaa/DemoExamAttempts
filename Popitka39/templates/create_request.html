@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/static/style.css">
+    <title>Пассажирам.РФ</title>
+</head>
+<body>
+    <h1>Новая заявка</h1>
+    <div class="nav">
+        <a href="/profile">Назад</a>
+    </div>
+    
+
+    <form method="post">
+        Вид транспорта: <select name="transport">
+            {%for t in transports%}
+            <option value="{{t}}">{{t}}</option>
+            {%endfor%}
+        </select> <br>
+
+        Дата старта: <input type="date" name="date" required><br>
+
+        Способ оплаты: <select name="payment">
+            {%for p in payments%}
+            <option value="{{p}}">{{p}}</option>
+            {%endfor%}
+        </select> <br>
+        <div id="change-field-container" style="display: none;">
+            <label for="change_amount">Сдача с (сумма):</label>
+            <input type="number" step="0.01" name="change_amount" id="change_amount" placeholder="Например, 5000">
+        </div>
+        <button type="submit">Потвердить</button>
+    </form>
+
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const paymentSelect = document.querySelector('select[name="payment"]');
+        const changeFieldContainer = document.createElement('div');
+        changeFieldContainer.id = 'change-field-container';
+        changeFieldContainer.style.display = 'none';
+        changeFieldContainer.innerHTML = `
+            <label for="change_amount">Сдача с (сумма):</label>
+            <input type="number" id="change_amount" name="change_amount" step="0.01" placeholder="Например, 5000">
+        `;
+
+        // Вставляем после select или в нужное место формы
+        paymentSelect.insertAdjacentElement('afterend', changeFieldContainer);
+
+        function toggleChangeField() {
+            if (paymentSelect.value === 'Наличные') {
+                changeFieldContainer.style.display = 'block';
+            } else {
+                changeFieldContainer.style.display = 'none';
+            }
+        }
+
+        paymentSelect.addEventListener('change', toggleChangeField);
+        toggleChangeField(); // вызов при загрузке страницы
+    });
+</script>
+</body>
+</html>
